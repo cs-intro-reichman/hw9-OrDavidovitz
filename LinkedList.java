@@ -92,7 +92,7 @@ public class LinkedList {
 	 */
 	public void add(int index, MemoryBlock block) {
 		if (index < 0 || index > size) {
-			throw new IllegalArgumentException("index must be between 0 and " + size);
+			throw new IllegalArgumentException("index must be between 0 and size");
 		}
 	
 		Node newOne = new Node(block);
