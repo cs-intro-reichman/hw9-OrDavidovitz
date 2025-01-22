@@ -13,8 +13,10 @@
  import java.io.IOException;
  import java.io.InputStream;
  import java.net.URL;
- import java.net.Socket;
- import java.net.URLConnection;
+import java.net.MalformedURLException;
+import java.net.Socket;
+import java.net.URI;
+import java.net.URLConnection;
  import java.util.ArrayList;
  import java.util.InputMismatchException;
  import java.util.Locale;
@@ -177,8 +179,14 @@
  
              // or URL from web
              if (url == null) {
-                 url = new URL(name);
-             }
+    try {
+        URI uri = URI.create(name); // Validate name as a URI
+        url = uri.toURL();         // Convert URI to URL
+    } catch (IllegalArgumentException | MalformedURLException e) {
+        throw new IllegalArgumentException("Invalid URL: " + name, e);
+    }
+}
+
  
              URLConnection site = url.openConnection();
  
