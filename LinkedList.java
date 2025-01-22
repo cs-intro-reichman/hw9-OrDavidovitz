@@ -94,33 +94,27 @@ public class LinkedList {
 		if (index < 0 || index > size) {
 			throw new IllegalArgumentException("Index must be between 0 and " + size);
 		}
+	
 		Node newOne = new Node(block);
-		if (index == 0)
-		{
-		newOne.next=first;
-		first = newOne;
-		}
-		if (index==size)
-		{
+	
+		if (index == 0) {
+			newOne.next = first;
+			first = newOne;
 			if (size == 0) {
-				first = last = newOne;
-			} else {
-				last.next = newOne;
 				last = newOne;
 			}
-			size++;
-			return;
+		} else if (index == size) {
+			last.next = newOne;
+			last = newOne;
+		} else {
+			Node prevNode = getNode(index - 1);
+			newOne.next = prevNode.next;
+			prevNode.next = newOne;
 		}
-		for (int i=0; i<index;i++)
-		{
-			Node prevNode = getNode(index - 1);  
-			newOne.next = prevNode.next;         
-			prevNode.next = newOne;              
-			size++;   
-		}
-
-		
+	
+		size++;
 	}
+	
 
 	/**
 	 * Creates a new node that points to the given memory block, and adds it
@@ -171,7 +165,7 @@ public class LinkedList {
 	 */
 	public MemoryBlock getBlock(int index) {
 		if (index < 0 || index > size) {
-			throw new IllegalArgumentException("Index must be between 0 and " + size);
+			throw new IllegalArgumentException("Index must be between 0 and size" );
 		}
 
 		Node node = getNode(index);
