@@ -69,9 +69,9 @@ public class MemorySpace {
 	
 				if (block.length == length) {
 					if (previous == null) {
-						freeList.remove(0); // Remove the first node if it matches exactly
+						freeList.remove(0); 
 					} else {
-						freeList.remove(current.block); // Remove the matching block
+						freeList.remove(block); 
 					}
 				} else {
 					block.baseAddress += length;
@@ -87,7 +87,7 @@ public class MemorySpace {
 			current = current.next;
 		}
 	
-		return -1; // No suitable block found
+		return -1; 
 	}
 	
 	
@@ -109,9 +109,9 @@ public class MemorySpace {
 	
 			if (block.baseAddress == address) {
 				if (previous == null) {
-					allocatedList.remove(0);
+					allocatedList.remove(0); 
 				} else {
-					allocatedList.remove(block);
+					allocatedList.remove(block); 
 				}
 	
 				freeList.addLast(block);
@@ -124,6 +124,7 @@ public class MemorySpace {
 	
 		throw new IllegalArgumentException("Memory block with base address " + address + " not found in allocated list.");
 	}
+	
 	
 	
 	
@@ -156,6 +157,7 @@ public class MemorySpace {
 			}
 		}
 	}
+	
 	
 	
 }

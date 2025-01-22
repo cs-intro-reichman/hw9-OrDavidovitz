@@ -92,7 +92,7 @@ public class LinkedList {
 	 */
 	public void add(int index, MemoryBlock block) {
 		if (index < 0 || index > size) {
-			throw new IllegalArgumentException("Index must be between 0 and " + size);
+			throw new IllegalArgumentException("index must be between 0 and " + size);
 		}
 	
 		Node newOne = new Node(block);
@@ -196,6 +196,9 @@ public class LinkedList {
 	 *        the node that will be removed from this list
 	 */
 	public void remove(Node node) {
+		if (node == null) {
+			throw new NullPointerException();
+		}
 		if (first == null) return;  
 	
 		if (first == node) {
@@ -225,7 +228,7 @@ public class LinkedList {
 	 */
 	public void remove(int index) {
 		if (index < 0 || index >= size) {
-			throw new IllegalArgumentException("Index must be between 0 and " + (size - 1));
+			throw new IllegalArgumentException("index must be between 0 and size");
 		}
 	
 		if (index == 0) {
@@ -254,7 +257,7 @@ public class LinkedList {
 	 */
 	public void remove(MemoryBlock block) {
 		if (first == null) {
-			throw new IllegalArgumentException("Memory block not found in the list");
+			throw new IllegalArgumentException("index must be between 0 and size");
 		}
 	
 		Node current = first;
@@ -266,7 +269,7 @@ public class LinkedList {
 		}
 	
 		if (current == null) {
-			throw new IllegalArgumentException("Memory block not found in the list");
+			throw new IllegalArgumentException("index must be between 0 and size");
 		}
 	
 		if (previous == null) {
