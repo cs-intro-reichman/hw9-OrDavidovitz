@@ -274,11 +274,11 @@ public class LinkedList {
 	 */
 	public String toString() {
 	ListIterator itr = this.iterator();
-	String str1 = "";
+	String str = "";
 	while (itr.hasNext()) {
-	str1+= "(" + itr.current.block.baseAddress + " , " + itr.current.block.length + ") ";
+	str += "(" + itr.current.block.baseAddress + " , " + itr.current.block.length + ") ";
 	itr.next();
 	}
-	return str1;
+	return str;
 	}
 }
