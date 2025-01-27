@@ -305,20 +305,13 @@ public class LinkedList {
 	 */
 	@Override
 	public String toString() {
-		if (first == null) {
-			return "";
+		ListIterator itr = this.iterator();
+		String str = "";
+		while (itr.hasNext()) {
+		str += "(" + itr.current.block.baseAddress + " , " + itr.current.block.length + ") ";
+		itr.next();
 		}
-	
-		StringBuilder result = new StringBuilder();
-		Node current = first;
-		while (current != null) {
-			result.append(current.block.toString()); 
-			if (current.next != null) {
-				result.append(" -> "); 
-			}
-			current = current.next;
+		return str;
 		}
-		return result.toString();
-	}
 }
 	
